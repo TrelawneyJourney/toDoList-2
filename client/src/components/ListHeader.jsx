@@ -1,4 +1,4 @@
-import React from "react";
+import Modal from "./Modal";
 
 const ListHeader = ({ listName }) => {
   const signnOut = () => {
@@ -14,6 +14,7 @@ const ListHeader = ({ listName }) => {
           SIGN OUT
         </button>
       </div>
+      {/* <Modal /> */}
     </div>
   );
 };

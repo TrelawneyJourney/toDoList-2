@@ -26,8 +26,8 @@ function App() {
   );
 
   return (
-    <div className="w-full min-h-screen flex justify-center items-start pt-12 px-4">
-      <div className="w-full max-w-4xl">
+    <div className="w-dvw min-h-screen flex justify-center items-start pt-12 px-4">
+      <div className="w-dvw max-w-4xl">
         <div className="app">
           <ListHeader listName={"🏝️ Holiday tick list"} />
 
