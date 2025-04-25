@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-td1: #daa0f2;
+  --color-td2: #bc85f2;
+  --color-td3: #a36bf2;
+  --color-td4: #883df2;
+  --color-td5: #b3c8f2;
+  --color-td6: #7e84f2;
+  --color-td7: #f26b8f;
+  --color-td8: #f2a0b6;
+  --color-td9: #a0f2bd;
+  --color-td10: #6bf29a;
+  --font-primary: "Trebuchet MS", Arial, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-gradient-to-r from-td1 via-td2 to-td5 m-0 p-0 font-primary;
+  }
+  button {
+    /* @apply mx-1.5 py-1 px-2.5 text-xs border rounded-full bg-transparent focus:outline-1 focus:outline-offset-1; */
+    @apply px-3 py-2 text-xs font-medium text-center focus:outline-none focus:ring-2 rounded-lg;
+  }
+}
+@layer components {
+  .app {
+    @apply bg-white rounded-2xl py-4 px-6 w-full;
+  }
+} /* @apply bg-white shadow-[0_6px_24px_rgba(0,0,0,0.05),_0_0_0_1px_rgba(0,0,0,0.08)] rounded-2xl p-2.5 w-4xl mt-12; */
+
+@layer utilities {
+  .flex-container {
+    @apply flex items-center gap-2;
+  }
+  .create {
+    @apply text-white bg-td3 hover:bg-td1  focus:ring-td1 focus:bg-td1;
+  }
+  .signout {
+    @apply text-white bg-td6 hover:bg-td5  focus:ring-td5 focus:bg-td5;
+  }
+  .edit {
+    @apply text-td1 bg-transparent border hover:bg-td1 hover:text-white focus:ring-td1;
+  }
+  .delete {
+    @apply text-td8 bg-transparent border hover:bg-td8 hover:text-white focus:ring-td8;
+  }
+  .list-header {
+    @apply w-full border-b border-b-[rgba(0,0,0,0.05)];
+  }
+  .list-item {
+    @apply w-full my-2.5 rounded-xl shadow-sm flex justify-between p-2;
+  }
+}
+
+/* .tick {
+  padding: 10px;
+}
+.tick path {
+  fill: #000;
+  stroke: #000;
+  stroke-miterlimit: 10;
+  stroke-width: 4px;
+} */
