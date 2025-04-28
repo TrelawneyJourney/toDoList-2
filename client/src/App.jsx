@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ListHeader from "./components/ListHeader";
 import ListItem from "./components/ListItem";
+import { SERVER_URL } from "../config";
 
 function App() {
   const userEmail = "anto@gmail.com";
@@ -8,7 +9,7 @@ function App() {
 
   const getData = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/todos/${userEmail}`);
+      const response = await fetch(`${SERVER_URL}/todos/${userEmail}`);
       const json = await response.json();
       console.log(json);
       setTasks(json);
