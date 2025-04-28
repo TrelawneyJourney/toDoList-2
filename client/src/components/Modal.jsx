@@ -20,7 +20,6 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
   // });
 
   //send it to database
-
   const postData = async (e) => {
     e.preventDefault();
     try {
@@ -37,6 +36,24 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
       // console.log(response);
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  //edit data
+  const editData = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:8000/todos/${task.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (response.status === 200) {
+        setShowModal(false);
+        getData();
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -86,7 +103,7 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
               className={mode}
               type="submit"
               value="ADD"
-              onClick={editMode ? "" : postData}
+              onClick={editMode ? editData : postData}
             >
               {" "}
               ADD
