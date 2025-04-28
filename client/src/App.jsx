@@ -29,10 +29,10 @@ function App() {
     <div className="w-dvw min-h-screen flex justify-center items-start pt-12 px-4">
       <div className="w-dvw max-w-4xl">
         <div className="app">
-          <ListHeader listName={"🏝️ Holiday tick list"} />
+          <ListHeader listName={"🏝️ Holiday tick list"} getData={getData} />
 
           {sortedTasks?.map((task) => (
-            <ListItem key={task.id} task={task} />
+            <ListItem key={task.id} task={task} getData={getData} />
           ))}
         </div>
       </div>

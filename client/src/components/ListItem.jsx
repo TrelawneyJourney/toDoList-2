@@ -3,14 +3,14 @@ import TickIcon from "./TickIcon";
 import ProgressBar from "./ProgressBar";
 import Modal from "./Modal";
 
-const ListItem = ({ task }) => {
+const ListItem = ({ task, getData }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <li className="list-item">
       <div className="flex-container">
         <TickIcon />
-        <p className="task-title">{task.title}</p>
+        <p className="task-title text-neutral-500">{task.title}</p>
         <ProgressBar />
       </div>
 
@@ -21,7 +21,12 @@ const ListItem = ({ task }) => {
         <button className="delete">DELETE</button>
       </div>
       {showModal && (
-        <Modal mode={"edit"} setShowModal={setShowModal} task={task} />
+        <Modal
+          mode={"edit"}
+          setShowModal={setShowModal}
+          getData={getData}
+          task={task}
+        />
       )}
     </li>
   );

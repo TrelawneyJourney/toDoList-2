@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import IconX from "./IconX";
 
-const Modal = ({ mode, setShowModal, task }) => {
+const Modal = ({ mode, setShowModal, getData, task }) => {
   const editMode = mode === "edit" ? true : false;
 
   const initialItems = {
-    user_email: editMode ? task.user_email : "anto@test.com",
+    user_email: editMode ? task.user_email : "anto@gmail.com",
     title: editMode ? task.title : "",
     progress: editMode ? task.progress : 50,
     date: editMode ? task.date : new Date(),
@@ -29,7 +29,12 @@ const Modal = ({ mode, setShowModal, task }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      console.log(response);
+      if (response.status === 200) {
+        console.log("worked!");
+        setShowModal(false);
+        getData();
+      }
+      // console.log(response);
     } catch (err) {
       console.error(err);
     }
