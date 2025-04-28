@@ -54,7 +54,7 @@ const Modal = ({ mode, setShowModal, task }) => {
             <h3>Let's {mode} you task</h3>
             <IconX onClick={() => setShowModal(false)} />
           </div>
-          <form className="flex flex-col gap-3">
+          <form className="flex flex-col gap-3 caret-td3 accent-td3">
             <input
               type="text"
               required
@@ -77,12 +77,22 @@ const Modal = ({ mode, setShowModal, task }) => {
               onChange={handleChange}
             />
 
-            <input
+            <button
               className={mode}
               type="submit"
               value="ADD"
               onClick={editMode ? "" : postData}
-            />
+            >
+              {" "}
+              ADD
+            </button>
+
+            {/* <input
+              className={mode}
+              type="submit"
+              value="ADD"
+              onClick={editMode ? "" : postData}
+            /> */}
           </form>
         </div>
       </div>

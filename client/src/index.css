@@ -28,7 +28,7 @@
     @apply bg-white rounded-2xl py-4 px-6 w-full;
   }
   .modal {
-    @apply w-dvh bg-amber-50 p-10 rounded-xl;
+    @apply w-dvh bg-amber-50 p-10 rounded-xl text-neutral-500;
   }
 } /* @apply bg-white shadow-[0_6px_24px_rgba(0,0,0,0.05),_0_0_0_1px_rgba(0,0,0,0.08)] rounded-2xl p-2.5 w-4xl mt-12; */
 
