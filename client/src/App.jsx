@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import ListHeader from "./components/ListHeader";
 import ListItem from "./components/ListItem";
+import Auth from "./components/Auth";
 import { SERVER_URL } from "../config";
 
 function App() {
   const userEmail = "anto@gmail.com";
   const [tasks, setTasks] = useState(null);
+
+  const authToken = false;
 
   const getData = async () => {
     try {
@@ -18,7 +21,11 @@ function App() {
     }
   };
 
-  useEffect(() => getData, []);
+  useEffect(() => {
+    if (authToken) {
+      getData();
+    }
+  }, []);
   console.log(tasks);
 
   //sort by date
@@ -29,12 +36,17 @@ function App() {
   return (
     <div className="w-dvw min-h-screen flex justify-center items-start pt-12 px-4">
       <div className="w-dvw max-w-4xl">
-        <div className="app">
-          <ListHeader listName={"🏝️ Holiday tick list"} getData={getData} />
+        <div>
+          {!authToken && <Auth />}
+          {authToken && (
+            <div className="app">
+              <ListHeader listName={"🏝️ Holiday tick list"} getData={getData} />
 
-          {sortedTasks?.map((task) => (
-            <ListItem key={task.id} task={task} getData={getData} />
-          ))}
+              {sortedTasks?.map((task) => (
+                <ListItem key={task.id} task={task} getData={getData} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

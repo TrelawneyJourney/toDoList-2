@@ -74,10 +74,10 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
       <div className="overlay absolute left-0 top-0 w-screen min-h-screen flex justify-center items-center">
         <div className="modal">
           <div className="form-title-container flex justify-between mb-6">
-            <h3>Let's {mode} you task</h3>
+            <h3 className="text-xl font-semibold">Let's {mode} you task</h3>
             <IconX onClick={() => setShowModal(false)} />
           </div>
-          <form className="flex flex-col gap-3 caret-td3 accent-td3">
+          <form className="flex flex-col gap-3">
             <input
               type="text"
               required
@@ -86,7 +86,7 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
               name="title"
               value={data.title}
               onChange={handleChange}
-              className="bg-transparent border border-td1 text-td4 text-sm rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-td1 placeholder-td1 placeholder-opacity-60 focus:placeholder-opacity-0"
+              className="input-text mb-2"
             />
             <label htmlFor="range">Drag to select your current progress</label>
             <input
@@ -98,6 +98,7 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
               name="progress"
               value={data.progress}
               onChange={handleChange}
+              className="mb-4"
             />
 
             <button

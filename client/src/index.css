@@ -22,13 +22,16 @@
     /* @apply mx-1.5 py-1 px-2.5 text-xs border rounded-full bg-transparent focus:outline-1 focus:outline-offset-1; */
     @apply px-3 py-2 text-xs font-medium text-center focus:outline-none focus:ring-2 rounded-lg cursor-pointer;
   }
+  form {
+    @apply caret-td3 accent-td3;
+  }
 }
 @layer components {
   .app {
     @apply bg-white rounded-2xl py-4 px-6 w-full;
   }
   .modal {
-    @apply w-dvh bg-amber-50 p-10 rounded-xl text-neutral-500;
+    @apply w-dvh bg-amber-50 p-10 rounded-xl text-gray-500;
   }
 } /* @apply bg-white shadow-[0_6px_24px_rgba(0,0,0,0.05),_0_0_0_1px_rgba(0,0,0,0.08)] rounded-2xl p-2.5 w-4xl mt-12; */
 
@@ -56,6 +59,9 @@
   }
   .overlay {
     @apply bg-gradient-to-r from-td5/85 via-td2/85 to-td1/85;
+  }
+  .input-text {
+    @apply bg-transparent border border-td1 text-td4 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-td1 focus:border-td1 block w-full p-2.5;
   }
 }
 
