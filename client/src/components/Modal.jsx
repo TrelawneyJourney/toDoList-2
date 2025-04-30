@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import IconX from "./IconX";
 import { SERVER_URL } from "../../config";
+import { useCookies } from "react-cookie";
 
 const Modal = ({ mode, setShowModal, getData, task }) => {
   const editMode = mode === "edit" ? true : false;
+  const [cookies, setCookie, removeCookie] = useCookies(null);
 
   const initialItems = {
-    user_email: editMode ? task.user_email : "anto@gmail.com",
+    user_email: editMode ? task.user_email : cookies.Email,
     title: editMode ? task.title : "",
     progress: editMode ? task.progress : 50,
     date: editMode ? task.date : new Date(),

@@ -1,46 +1,53 @@
 import { useState } from "react";
 import IconX from "./IconX";
+import { SERVER_URL } from "../../config";
+import { useCookies } from "react-cookie";
 
 const Auth = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(null);
   const [isLogIn, setIsLogin] = useState(true);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
+
+  console.log(email, password, confirmPassword);
+  console.log(cookies);
+
   // const isLogIn = false;
   const viewLogin = (status) => {
     setError(null);
     setIsLogin(status);
   };
+
+  const handleSubmit = async (e, endpoint) => {
+    e.preventDefault();
+    if (!isLogIn && password !== confirmPassword) {
+      setError("Make sure passwords match!");
+      return;
+    }
+    const response = await fetch(`${SERVER_URL}/${endpoint}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await response.json();
+    // console.log(data);
+    if (data.detail) {
+      setError(data.detail);
+    } else {
+      setCookie("Email", data.email);
+      setCookie("AuthToken", data.token);
+
+      window.location.reload();
+    }
+  };
+
   return (
-    <div className="auth-container flex justify-center">
-      {/* <div className="auth-container-box border border-td7">
-        <form action="">
-          <h2>{isLogIn ? "Please log in" : "Please sign in!"}</h2>
-
-          <input type="email" placeholder="email" />
-
-          <input type="password" placeholder="password" />
-
-          {!isLogIn && <input type="password" placeholder="confirm password" />}
-
-          <button type="submit" className="">
-            Submit
-          </button>
-
-          {error && <p>{error}</p>}
-        </form>
-        <div className="auth-options">
-          <button
-            onClick={() => viewLogin(false)}
-            style={{ background: !isLogIn ? "bg-td1" : "bg-td9" }}
-          >
-            Sign Up
-          </button>
-          <button onClick={() => viewLogin(true)}>Login</button>
-        </div>
-      </div> */}
-
+    <div className="flex justify-center">
       <div className="bg-white p-6 w-full max-w-md max-h-full shadow-2xl border border-td1 rounded-lg">
         {/* <!-- Modal header --> */}
-        <div className="flex items-center justify-between p-2 md:p-4 border-b rounded-t  border-td1">
+        <div className="flex items-center justify-between p-2 md:p-4 border-b rounded-t border-td1">
           <h3 className="text-xl font-semibold text-gray-600 ">
             {isLogIn ? "Log in to our platform" : "Sign in to our platform"}
           </h3>
@@ -50,6 +57,7 @@ const Auth = () => {
         {/* <!-- Modal body --> */}
         <div className="p-4 md:p-5">
           <form className="space-y-4" action="#">
+            {/* <!-- Email input --> */}
             <div>
               <label
                 htmlFor="email"
@@ -64,9 +72,10 @@ const Auth = () => {
                 className="input-text"
                 placeholder="youremail@email.com"
                 required
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-
+            {/* <!-- Password input --> */}
             <div>
               <label
                 htmlFor="password"
@@ -81,9 +90,10 @@ const Auth = () => {
                 placeholder="••••••••"
                 className="input-text"
                 required
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-
+            {/* <!-- Confirm password input --> */}
             {!isLogIn && (
               <div>
                 <label
@@ -99,6 +109,7 @@ const Auth = () => {
                   placeholder="••••••••"
                   className="input-text"
                   required
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
             )}
@@ -131,6 +142,7 @@ const Auth = () => {
             <button
               type="submit"
               className="w-full text-white bg-td6 hover:bg-td5 focus:ring-4 focus:outline-none focus:ring-td5 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              onClick={(e) => handleSubmit(e, isLogIn ? "login" : "signup")}
             >
               {isLogIn ? "Login to your account" : "Create account"}
             </button>
@@ -160,6 +172,7 @@ const Auth = () => {
                 </a>
               </div>
             )}
+
             {error && <p>{error}</p>}
           </form>
         </div>
