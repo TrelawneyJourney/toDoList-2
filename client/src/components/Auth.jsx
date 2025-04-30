@@ -173,7 +173,11 @@ const Auth = () => {
               </div>
             )}
 
-            {error && <p>{error}</p>}
+            {error && (
+              <div className="flex justify-center bg-red-300/40 py-1">
+                <p className="text-sm text-red-600">{error}</p>
+              </div>
+            )}
           </form>
         </div>
       </div>
