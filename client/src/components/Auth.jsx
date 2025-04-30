@@ -51,7 +51,7 @@ const Auth = () => {
           <h3 className="text-xl font-semibold text-gray-600 ">
             {isLogIn ? "Log in to our platform" : "Sign in to our platform"}
           </h3>
-          <IconX color="text-gray-300" />
+          {/* <IconX color="text-gray-300" /> */}
         </div>
 
         {/* <!-- Modal body --> */}
@@ -79,7 +79,7 @@ const Auth = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block mb-2 text-sm font-medium text-gray-500 "
+                className="block mb-2 text-sm font-medium text-gray-500"
               >
                 Your password
               </label>
@@ -98,7 +98,7 @@ const Auth = () => {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-500 "
+                  className="block mb-2 text-sm font-medium text-gray-500"
                 >
                   Confirm your password
                 </label>
