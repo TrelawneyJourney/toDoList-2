@@ -22,20 +22,26 @@ const ListItem = ({ task, getData }) => {
 
   return (
     <li className="list-item">
-      <div className="flex-container">
-        <TickIcon />
-        <p className="task-title text-neutral-500">{task.title}</p>
-        <ProgressBar />
+      <div className="flex w-full justify-between items-center">
+        <div className="flex-container">
+          <TickIcon />
+          <p className="task-title text-neutral-500">{task.title}</p>
+        </div>
+
+        <div className="">
+          <ProgressBar progress={task.progress} />
+        </div>
+
+        <div className="flex-container">
+          <button className="edit" onClick={() => setShowModal(true)}>
+            EDIT
+          </button>
+          <button className="delete" onClick={deleteItem}>
+            DELETE
+          </button>
+        </div>
       </div>
 
-      <div className="flex-container">
-        <button className="edit" onClick={() => setShowModal(true)}>
-          EDIT
-        </button>
-        <button className="delete" onClick={deleteItem}>
-          DELETE
-        </button>
-      </div>
       {showModal && (
         <Modal
           mode={"edit"}

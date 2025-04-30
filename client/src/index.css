@@ -55,7 +55,7 @@
     @apply w-full border-b border-b-[rgba(0,0,0,0.05)];
   }
   .list-item {
-    @apply w-full my-2.5 rounded-xl shadow-sm flex justify-between p-2;
+    @apply w-full my-2.5 rounded-xl shadow-sm flex p-2;
   }
   .overlay {
     @apply bg-gradient-to-r from-td5/85 via-td2/85 to-td1/85;
@@ -64,13 +64,3 @@
     @apply bg-transparent border border-td1 text-td4 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-td1 focus:border-td1 block w-full p-2.5;
   }
 }
-
-/* .tick {
-  padding: 10px;
-}
-.tick path {
-  fill: #000;
-  stroke: #000;
-  stroke-miterlimit: 10;
-  stroke-width: 4px;
-} */

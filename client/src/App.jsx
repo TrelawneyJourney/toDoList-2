@@ -44,9 +44,11 @@ function App() {
           {authToken && (
             <div className="app">
               <ListHeader listName={"🏝️ Holiday tick list"} getData={getData} />
-              <p className="text-sm font-medium text-gray-500">
-                Welcome back <strong>{userEmail}</strong>
-              </p>
+              <div className="flex justify-end">
+                <p className="text-sm font-medium text-gray-500">
+                  Welcome <strong>{userEmail}</strong>
+                </p>
+              </div>
               {sortedTasks?.map((task) => (
                 <ListItem key={task.id} task={task} getData={getData} />
               ))}
